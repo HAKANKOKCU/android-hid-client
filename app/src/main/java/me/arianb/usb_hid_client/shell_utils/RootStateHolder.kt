@@ -54,20 +54,20 @@ class RootStateHolder private constructor() {
     }
 
     fun detectRootMethod(): RootMethod {
-        if (!hasRootPermissions()) {
-            Timber.i("Failed to get root shell. Device is most likely not rooted or hasn't given the app root permissions")
-            return RootMethod.UNROOTED
-        }
+        //if (!hasRootPermissions()) {
+        //    Timber.i("Failed to get root shell. Device is most likely not rooted or hasn't given the app root permissions")
+        //    return RootMethod.UNROOTED
+        //}
 
-        for ((binary, matchingRootMethod) in rootBinaryMap) {
-            //Timber.d("checking for binary: %s", binary);
-            val commandResult = Shell.cmd("type $binary").exec()
-            if (commandResult.code == 0) {
-                Timber.i("Detected root method as: %s", matchingRootMethod)
-                return matchingRootMethod
-            }
-        }
-        return RootMethod.UNKNOWN
+        //for ((binary, matchingRootMethod) in rootBinaryMap) {
+        //    //Timber.d("checking for binary: %s", binary);
+        //    val commandResult = Shell.cmd("type $binary").exec()
+        //    if (commandResult.code == 0) {
+        //        Timber.i("Detected root method as: %s", matchingRootMethod)
+        //        return matchingRootMethod
+        //    }
+        //}
+        return RootMethod.MAGISK //i have no idea so yah im trying, upper code was crashing :skull:
     }
 
     companion object {
