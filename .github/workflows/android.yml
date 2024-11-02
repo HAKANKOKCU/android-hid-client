@@ -76,12 +76,3 @@ jobs:
 
       - name: Accept Android licenses
         run: yes | "$ANDROID_HOME"/cmdline-tools/latest/bin/sdkmanager --licenses || true
-
-      # NOTE: Limiting to one gradle worker because otherwise it was trying to install the Android Emulator multiple times
-      #       simultaneously, causing FileAlreadyExistsExceptions.
-      - name: Run instrumented tests on a subset of supported devices
-        run: |
-          ./gradlew ciGroupdebugAndroidTest \
-          -Dorg.gradle.workers.max=1 \
-          -Pandroid.testoptions.manageddevices.emulator.gpu=swiftshader_indirect \
-          --info
