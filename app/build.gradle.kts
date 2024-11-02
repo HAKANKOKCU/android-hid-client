@@ -14,7 +14,7 @@ android {
         // Android SDK Build Tools version
         buildToolsVersion = "34.0.0"
 
-        // SDK support
+        // SDK support, android 6 testing
         minSdk = 23
         targetSdk = 33
         compileSdk = 34
